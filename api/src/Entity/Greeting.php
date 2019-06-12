@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
+use Ramsey\Uuid\UuidInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -14,25 +15,20 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Greeting
 {
-    /**
-     * @var int The entity Id
-     *
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
-    private $id;
+
+    use EntityIdTrait;
 
     /**
-     * @var string A nice person
+     * @var string A warm greeting
      *
      * @ORM\Column
      * @Assert\NotBlank
      */
     public $name = '';
 
-    public function getId(): int
+    public function setName($name)
     {
-        return $this->id;
+        $this->name = $name;
     }
+
 }
