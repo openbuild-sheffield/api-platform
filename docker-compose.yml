@@ -53,7 +53,8 @@ services:
 
   db:
     # In production, you may want to use a managed database service
-    image: postgres:10-alpine
+    build:
+      context: ./postgres
     environment:
       - POSTGRES_DB=api
       - POSTGRES_USER=api-platform
